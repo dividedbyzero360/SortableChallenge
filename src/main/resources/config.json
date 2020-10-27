@@ -1,0 +1,37 @@
+{
+    "sites": [
+        {
+            "name": "houseofcheese.com",
+            "bidders": ["AUCT", "BIDD","CIEE"],
+            "floor": 32
+        },
+        {
+            "name": "siteWithNonExistingBidder.com",
+            "bidders": ["nonExistentBidder"],
+            "floor": 10
+        },
+        {
+            "name":"noOneBidded.com",
+            "bidder": ["AUCT","BIDD","CIEE", "nonExistentBidder"],
+            "floor":10
+        }
+    ],
+    "bidders": [
+        {
+            "name": "AUCT",
+            "adjustment": -0.0625
+        },
+        {
+            "name": "BIDD",
+            "adjustment": 0
+        },
+        {
+            "name": "CIEE",
+            "adjustment": 0.05 
+        },
+        {
+            "name":"notPermitted",
+            "adjustment":20
+        }
+    ]
+}
