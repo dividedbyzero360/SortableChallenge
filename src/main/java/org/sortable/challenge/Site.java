@@ -6,13 +6,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
 
-import java.util.Map;
-import java.util.HashMap;
-import java.util.Set;
-import java.util.HashSet;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.Collections;
+import java.util.*;
 
 
 public class Site {
@@ -21,6 +15,7 @@ public class Site {
     private static final String NAME_FIELD = "name";
     private static final String FLOOR_FIELD = "floor";
     private static final String BIDDERS_FIELD = "bidders";
+
     private final Set<Bidder> bidders;
     private final String name;
     private final double floor;
@@ -29,17 +24,16 @@ public class Site {
         this.name = name;
         this.floor = floor;
         this.bidders = new HashSet<>();
-        constructBiddersFromBidderName(bidderNames);
+        constructBiddersFromNames(bidderNames);
 
     }
 
     public static Collection<Site> createSitesFromJSON(final JsonArray sitesList) {
-        Iterator<JsonElement> iterator = sitesList.iterator();
-        while (iterator.hasNext()) {
-            JsonObject bidderJSON = iterator.next().getAsJsonObject();
-            String name = bidderJSON.get(NAME_FIELD).getAsString();
-            double floor = bidderJSON.get(FLOOR_FIELD).getAsDouble();
-            Set<String> allowedBidderNames = new Gson().fromJson(bidderJSON.get(BIDDERS_FIELD), new TypeToken<Set<String>>() {
+        for (JsonElement eachSite : sitesList) {
+            JsonObject siteJSON = eachSite.getAsJsonObject();
+            String name = siteJSON.get(NAME_FIELD).getAsString();
+            double floor = siteJSON.get(FLOOR_FIELD).getAsDouble();
+            Set<String> allowedBidderNames = new Gson().fromJson(siteJSON.get(BIDDERS_FIELD), new TypeToken<Set<String>>() {
             }.getType());
             new Site(name, floor, allowedBidderNames).store();
         }
@@ -50,7 +44,7 @@ public class Site {
         return siteInstances.get(siteName);
     }
 
-    private void constructBiddersFromBidderName(final Set<String> bidderNames) {
+    private void constructBiddersFromNames(final Set<String> bidderNames) {
         if (bidderNames != null) {
             bidderNames.forEach((bidderName) -> {
                 Bidder bidder = Bidder.getNamed(bidderName);

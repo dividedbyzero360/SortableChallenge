@@ -12,8 +12,18 @@
         },
         {
             "name":"noOneBidded.com",
-            "bidder": ["AUCT","BIDD","CIEE", "nonExistentBidder"],
+            "bidders": ["AUCT","BIDD","CIEE", "nonExistentBidder"],
             "floor":10
+        },
+        {
+            "name":"repeatedsite.com",
+            "bidders": ["AUCT"],
+            "floor": 10
+        },
+        {
+            "name":"repeatedsite.com",
+            "bidders": ["BIDD"],
+            "floor": 10
         }
     ],
     "bidders": [
@@ -27,7 +37,7 @@
         },
         {
             "name": "CIEE",
-            "adjustment": 0.05 
+            "adjustment": 0.05
         },
         {
             "name":"notPermitted",

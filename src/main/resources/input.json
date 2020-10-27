@@ -30,7 +30,7 @@
          "sidebar"
       ],
       "bids":[
-         
+
       ]
    },
    {
@@ -55,7 +55,7 @@
    {
       "site":"houseofcheese.com",
       "units":[
-         
+
       ],
       "bids":[
          {
@@ -199,6 +199,24 @@
             "bidder":"notPermitted",
             "unit":"banner",
             "bid":40
+         }
+      ]
+   },
+   {
+      "site":"repeatedsite.com",
+      "units":[
+         "banner"
+      ],
+      "bids":[
+         {
+            "bidder":"AUCT",
+            "unit":"banner",
+            "bid":200
+         },
+         {
+            "bidder":"BIDD",
+            "unit":"banner",
+            "bid":10
          }
       ]
    }

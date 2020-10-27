@@ -6,10 +6,9 @@ import org.sortable.challenge.Auction;
 import org.sortable.challenge.Bid;
 
 import java.lang.reflect.Type;
-import java.util.Set;
-import java.util.List;
-import java.util.Iterator;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 
 public class AuctionDeserializer implements JsonDeserializer<Auction> {
 
@@ -26,19 +25,18 @@ public class AuctionDeserializer implements JsonDeserializer<Auction> {
         String siteName = jsonObject.get(SITE_NAME_FIELD).getAsString();
         Set<String> units = new Gson().fromJson(jsonObject.get(SITE_UNITS_FIELD), new TypeToken<Set<String>>() {
         }.getType());
-        JsonArray bidArray = jsonObject.get(BIDS_FIELD).getAsJsonArray();
 
-        List<Bid> bids =new ArrayList<>();
-        Iterator<JsonElement> bidIterator = bidArray.iterator();
-        while (bidIterator.hasNext()) {
-            JsonObject bidJsonObj = bidIterator.next().getAsJsonObject();
+        JsonArray bidArray = jsonObject.get(BIDS_FIELD).getAsJsonArray();
+        List<Bid> bids = new ArrayList<>();
+        for (JsonElement eachBid : bidArray) {
+            JsonObject bidJsonObj = eachBid.getAsJsonObject();
             String bidderName = bidJsonObj.get(BID_BIDDER_NAME_FIELD).getAsString();
             String unitName = bidJsonObj.get(BID_BIDDER_UNIT_FIELD).getAsString();
             double bidAmount = bidJsonObj.get(BID_BIDDER_BID_AMOUNT_FIELD).getAsDouble();
             Bid bid = new Bid(bidderName, unitName, bidAmount);
             bids.add(bid);
         }
-        return new Auction(siteName,units, bids);
+        return new Auction(siteName, units, bids);
     }
 }
 

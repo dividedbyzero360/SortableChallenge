@@ -11,11 +11,11 @@ import java.util.Map;
 
 public class Bidder {
     private static final Map<String, Bidder> bidderInstances = new HashMap<>();
+    private static final String NAME_FIELD = "name";
+    private static final String ADJUSTMENT_FIELD = "adjustment";
+
     private final String name;
     private final double adjustment;
-
-    private static final String NAME_FIELD ="name";
-    private static final String ADJUSTMENT_FIELD ="adjustment";
 
     private Bidder(final String name, final double adjustment) {
         this.name = name;
@@ -27,9 +27,8 @@ public class Bidder {
     }
 
     public static Collection<Bidder> createBiddersFromJSON(final JsonArray biddersList) {
-        Iterator<JsonElement> iterator = biddersList.iterator();
-        while (iterator.hasNext()) {
-            JsonObject bidderJSON = iterator.next().getAsJsonObject();
+        for (JsonElement eachBidder : biddersList) {
+            JsonObject bidderJSON = eachBidder.getAsJsonObject();
             String name = bidderJSON.get(NAME_FIELD).getAsString();
             double adjustment = bidderJSON.get(ADJUSTMENT_FIELD).getAsDouble();
             new Bidder(name, adjustment).store();
@@ -41,7 +40,7 @@ public class Bidder {
         bidderInstances.put(this.getName(), this);
     }
 
-    public double amountAfterAdjustments(final double amount){
+    public double amountAfterAdjustments(final double amount) {
         return amount + (amount * adjustment);
     }
 

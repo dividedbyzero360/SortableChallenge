@@ -1,61 +1,54 @@
 [
   [
     {
-      "bidder":"AUCT",
-      "unit":"banner",
-      "bid":35
+      "bidder": "AUCT",
+      "unit": "banner",
+      "bid": 35
     },
     {
-      "bidder":"BIDD",
-      "unit":"sidebar",
-      "bid":60
+      "bidder": "BIDD",
+      "unit": "sidebar",
+      "bid": 60
     }
   ],
-  [
-
-  ],
-  [
-
-  ],
-  [
-
-  ],
-  [
-
-  ],
+  [],
+  [],
+  [],
+  [],
   [
     {
-      "bidder":"BIDD",
-      "unit":"banner",
-      "bid":42
+      "bidder": "BIDD",
+      "unit": "banner",
+      "bid": 42
     }
   ],
   [
     {
-      "bidder":"CIEE",
-      "unit":"banner",
-      "bid":40
+      "bidder": "CIEE",
+      "unit": "banner",
+      "bid": 40
     }
   ],
-  [
-
-  ],
+  [],
   [
     {
-      "bidder":"CIEE",
-      "unit":"sidebar",
-      "bid":42.5
+      "bidder": "CIEE",
+      "unit": "sidebar",
+      "bid": 42.5
     },
     {
-      "bidder":"CIEE",
-      "unit":"banner",
-      "bid":42.5
+      "bidder": "CIEE",
+      "unit": "banner",
+      "bid": 42.5
     }
   ],
+  [],
+  [],
   [
-
-  ],
-  [
-
+    {
+      "bidder": "BIDD",
+      "unit": "banner",
+      "bid": 10
+    }
   ]
 ]

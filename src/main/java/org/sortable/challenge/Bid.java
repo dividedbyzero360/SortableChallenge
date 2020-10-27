@@ -11,24 +11,16 @@ public class Bid {
         this.bidAmount = bidAmount;
     }
 
-    public Bidder getBidder(){
+    public Bidder getBidder() {
         return bidder;
     }
 
-    public double getBidAmount(){
+    public double getBidAmount() {
         return bidAmount;
     }
 
-    public String getBidUnitName(){
+    public String getBidUnitName() {
         return bidUnitName;
     }
 
-    @Override
-    public String toString() {
-        return "org.sortable.challenge.Bid{" +
-                "bidder='" + bidder + '\'' +
-                ", unit='" + bidUnitName + '\'' +
-                ", bidAmount=" + bidAmount +
-                '}';
-    }
 }
