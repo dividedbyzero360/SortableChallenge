@@ -14,13 +14,13 @@ public class BidSerializer implements JsonSerializer<Bid> {
     public JsonElement serialize(final Bid bid,final Type type,final JsonSerializationContext jsonSerializationContext) {
         JsonObject obj = new JsonObject();
         obj.addProperty("bidder", bid.getBidder().getName());
-        obj.addProperty("unit", bid.getBidUnitName());
         if(isDisplayBidAmountAsLong(bid.getBidAmount())){
             obj.addProperty("bid", (long)bid.getBidAmount());
         }
         else{
             obj.addProperty("bid", bid.getBidAmount());
         }
+        obj.addProperty("unit", bid.getBidUnitName());
         return obj;
     }
 
