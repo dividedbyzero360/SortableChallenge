@@ -7,6 +7,7 @@ import org.sortable.challenge.Bid;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -23,7 +24,7 @@ public class AuctionDeserializer implements JsonDeserializer<Auction> {
     public Auction deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext jsonDeserializationContext) {
         JsonObject jsonObject = jsonElement.getAsJsonObject();
         String siteName = jsonObject.get(SITE_NAME_FIELD).getAsString();
-        Set<String> units = new Gson().fromJson(jsonObject.get(SITE_UNITS_FIELD), new TypeToken<Set<String>>() {
+        Set<String> units = new Gson().fromJson(jsonObject.get(SITE_UNITS_FIELD), new TypeToken<LinkedHashSet<String>>() {
         }.getType());
 
         JsonArray bidArray = jsonObject.get(BIDS_FIELD).getAsJsonArray();
